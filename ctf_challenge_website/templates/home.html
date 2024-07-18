@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="../static/home_style.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="total-points">
+      <h3>Total Points: <span id="total-points">0</span></h3>
+    </div>
+
+    <div class="card">
+      <h2>Challenge 1</h2>
+      <a href="/login1">Go to Challenge 1</a>
+      <div class="clue">
+        <button class="button" onclick="toggleClue('clue1')">Want Clue?</button>
+        <p id="clue1" style="display:none;">Why not manipulate the database to reveal what you need?<br>Flag format is flag{flag_found}</p>
+      </div>
+      <div class="input-container">
+        <p>Enter the flag:</p>
+        <input type="text" id="flagInput1"><br><br>
+        <button class="button" onclick="submitFlag('flagInput1', 'challenge1')">Submit</button>
+        <p id="flagInput1-display"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Challenge 2</h2>
+      <a href="/search">Go to Challenge 2</a>
+      <div class="clue">
+        <button class="button" onclick="toggleClue('clue2')">Want Clue?</button>
+        <p id="clue2" style="display:none;">Why not try injecting some unexpected scripts? Why not fetch more than just fruits? Maybe something you really want.<br>Flag format is flag{flag_found}</p>
+      </div>
+      <div class="input-container">
+        <p>Enter the flag:</p>
+        <input type="text" id="flagInput2"><br><br>
+        <button class="button" onclick="submitFlag('flagInput2', 'challenge2')">Submit</button>
+        <p id="flagInput2-display"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Challenge 3</h2>
+      <a href="/index">Go to Challenge 3</a>
+      <div class="clue">
+        <button class="button" onclick="toggleClue('clue3')">Want Clue?</button>
+        <p id="clue3" style="display:none;">Sometimes, devices listen to more commands than intended.<br>Flag format is flag{flag_found} </p>
+      </div>
+      <div class="input-container">
+        <p>Enter the flag:</p>
+        <input type="text" id="flagInput3"><br><br>
+        <button class="button" onclick="submitFlag('flagInput3', 'challenge3')">Submit</button>
+        <p id="flagInput3-display"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Challenge 4</h2>
+      <a href="/file">Go to Challenge 4</a>
+      <div class="clue">
+        <button class="button" onclick="toggleClue('clue4')">Want Clue?</button>
+        <p id="clue4" style="display:none;"> Flags.txt might help you <br> flag format: flag{flag_found}</p>
+      </div>
+      <div class="input-container">
+        <p>Enter the flag:</p>
+        <input type="text" id="flagInput4"><br><br>
+        <button class="button" onclick="submitFlag('flagInput4', 'challenge4')">Submit</button>
+        <p id="flagInput4-display"></p>
+      </div>
+    </div>
+
+
+  <script>
+    function toggleClue(clueId) {
+      var clue = document.getElementById(clueId);
+      clue.style.display = clue.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function submitFlag(inputId, challenge) {
+      var input = document.getElementById(inputId).value;
+      fetch('/submit_flag', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ flag: input, challenge: challenge }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        var display = document.getElementById(inputId + '-display');
+        if (data.correct) {
+          display.innerHTML = "Correct flag!";
+        } else {
+          display.innerHTML = "Incorrect flag.";
+        }
+
+        // Update total points
+        document.getElementById('total-points').innerText = data.total_points;
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+  </script>
+</body>
+</html>
