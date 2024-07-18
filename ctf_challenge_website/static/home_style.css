@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000; /* Black */
+  color: #f0f8ff; /* Light pastel */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  width: 80%; /* Centered container with 80% width */
+}
+.card {
+  background-color: #1a1a2e; /* Navy-blackish blue */
+  border: 2px solid #ff4136; /* Red border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+}
+.card h2 {
+  color: #ff851b; /* Orange */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.card p {
+  color: #a9a9b0; /* Light grey */
+  font-size: 16px;
+}
+.card a {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #7fdbff; /* Light blue */
+}
+.card a:hover {
+  text-decoration: underline;
+}
+.clue {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #7fdbff; /* Light blue */
+}
+.input-container {
+  margin-top: 10px;
+}
+.input-container input[type="text"] {
+  width: 80%; /* Input box width is 80% of the card width */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #fff; /* White border */
+  border-radius: 4px;
+  color: #fff; /* White text color */
+  background-color: #1a1a2e; /* Navy-blackish blue */
+  font-family: 'Courier New', Courier, monospace; /* Monospace font */
+}
+.input-container p {
+  color: #f0f8ff; /* Light pastel */
+  font-size: 16px;
+}
+.button {
+  background-color: transparent;
+  color: #ff851b; /* Orange */
+  border: 2px solid #ff851b; /* Orange */
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace; /* Monospace font */
+}
+.button:hover {
+  background-color: rgba(255, 133, 27, 0.1); /* Slightly orange background on hover */
+}
+.input-container input[type="text"],
+.button {
+  height: 40px; /* Adjust as needed */
+}
